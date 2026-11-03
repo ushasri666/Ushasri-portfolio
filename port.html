@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Usha Sri — Aspiring Software Developer | RGUKT Basar</title>
+<meta name="description" content="B Usha Sri — Computer Science Engineering student at RGUKT Basar. Web development, AI, cloud and software engineering projects.">
+<meta property="og:title" content="B Usha Sri — Portfolio"><meta property="og:description" content="Turning curiosity into code and ideas into reality.">
+<meta name="theme-color" content="#1B0F3A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
+<style>
+:root{--bg:#140B2E;--card:#1F1445;--tx:#ECEFFA;--mut:#ABA3D0;--ln:rgba(236,239,250,.1);--mint:#5EEAD4;--vio:#B79CFF;--amb:#FBBF24;--ros:#FB7185}
+html{scroll-behavior:smooth;scroll-padding-top:90px}html,body{overflow-x:hidden;max-width:100%}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 50% at 100% 0%,rgba(255,122,48,.30),transparent 70%),radial-gradient(55% 45% at 0% 100%,rgba(255,98,56,.22),transparent 70%),radial-gradient(70% 60% at 45% 35%,rgba(120,70,210,.20),transparent 75%)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+.d{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.03em}.m{font-family:'JetBrains Mono',monospace}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:1.75rem}
+.grad{background:linear-gradient(110deg,var(--mint),var(--vio) 45%,#FF8A3D);-webkit-background-clip:text;background-clip:text;color:transparent}
+.k{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mint)}
+.sec{padding:6rem 1.25rem;position:relative}.wrap{max-width:72rem;margin:auto}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.noscroll::-webkit-scrollbar{display:none}.noscroll{scrollbar-width:none}
+@keyframes mq{to{transform:translateX(-50%)}}.mq{animation:mq 30s linear infinite;width:max-content}
+@media(prefers-reduced-motion:reduce){.mq{animation:none}html{scroll-behavior:auto}}
+::selection{background:var(--vio);color:#140B2E}
+</style>
+</head>
+<body>
+<div id="root"></div><noscript>Please enable JavaScript to view this portfolio.</noscript>
+<script type="text/babel" data-presets="react">
+const FM = window.Motion || window.FramerMotion;
+const { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValue, useReducedMotion } = FM;
+const { useState, useEffect, useRef } = React;
+const EMAIL="sriusha544@gmail.com";
+const ease=[0.22,1,0.36,1];
+const useRM=()=>!!useReducedMotion();
+const IC={arrow:"M5 12h14M13 6l6 6-6 6",mail:"M3 5h18v14H3zM3 7l9 6 9-6",copy:"M9 9h11v11H9zM5 15V4h11",x:"M6 6l12 12M18 6L6 18",award:"M12 3a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM8.5 14L7 22l5-3 5 3-1.5-8",music:"M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z",rocket:"M14 10l-4 4M15 3c4 0 6 2 6 6-2 4-5 6-7 6l-5-5c0-2 2-5 6-7zM5 19c0-3 2-5 4-5M3 21l3-1",flask:"M9 3h6M10 3v6L4 20h16L14 9V3",spark:"M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z",cap:"M2 9l10-5 10 5-10 5zM6 11v5c3 3 9 3 12 0v-5",pin:"M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11zM12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",down:"M12 5v14M6 13l6 6 6-6"};
+const Ic=({n,s=18,c=""})=><svg aria-hidden="true" width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={c}><path d={IC[n]}/></svg>;
+ 
+function Rev({children,delay=0,className="",y=30}){const rm=useRM();return <motion.div className={className} initial={rm?false:{opacity:0,y}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:"-60px"}} transition={{duration:.9,delay,ease}}>{children}</motion.div>}
+function Title({k,children}){return <div className="mb-12"><Rev><div className="k mb-3">{k}</div></Rev><Rev delay={.08}><h2 className="d text-4xl md:text-6xl font-extrabold leading-[1.02]">{children}</h2></Rev></div>}
+ 
+function Btn({children,href,onClick,type,primary}){
+  const rm=useRM();const x=useMotionValue(0),y=useMotionValue(0);const sx=useSpring(x,{stiffness:220,damping:18}),sy=useSpring(y,{stiffness:220,damping:18});
+  const mv=e=>{if(rm)return;const r=e.currentTarget.getBoundingClientRect();x.set((e.clientX-r.left-r.width/2)*.22);y.set((e.clientY-r.top-r.height/2)*.3)};
+  const C=href?motion.a:motion.button;
+  return <C href={href} onClick={onClick} type={type} onMouseMove={mv} onMouseLeave={()=>{x.set(0);y.set(0)}} style={{x:sx,y:sy,...(primary?{background:"var(--mint)",color:"#140B2E"}:{border:"1px solid var(--ln)"})}} whileHover={rm?{}:{scale:1.04}} whileTap={{scale:.97}} className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold">{children}</C>;
+}
+ 
+function Nav(){
+  const ids=[["about","About"],["work","Work"],["toolkit","Toolkit"],["journey","Journey"],["certs","Certs"],["beyond","Beyond"],["contact","Contact"]];
+  const [a,setA]=useState("");const {scrollYProgress}=useScroll();const p=useSpring(scrollYProgress,{stiffness:120,damping:30});
+  useEffect(()=>{const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&setA(e.target.id)),{rootMargin:"-45% 0px -50% 0px"});["hero",...ids.map(i=>i[0])].forEach(i=>{const el=document.getElementById(i);el&&io.observe(el)});return()=>io.disconnect()},[]);
+  return <><motion.div aria-hidden="true" className="fixed top-0 inset-x-0 h-[3px] z-[90] origin-left" style={{scaleX:p,background:"linear-gradient(90deg,var(--mint),var(--vio),var(--ros))"}}/>
+  <motion.nav aria-label="Primary" initial={{y:-60,opacity:0}} animate={{y:0,opacity:1}} transition={{delay:1.1,duration:.8,ease}} className="fixed z-[80] left-0 right-0 flex justify-center px-3" style={{top:"calc(env(safe-area-inset-top,0px) + 14px)"}}>
+    <div className="flex items-center gap-1 rounded-full p-1.5 max-w-full" style={{background:"rgba(31,20,69,.72)",backdropFilter:"blur(16px)",WebkitBackdropFilter:"blur(16px)",border:"1px solid var(--ln)"}}>
+      <a href="#hero" className="d font-extrabold px-3 shrink-0" aria-label="Home">US<span style={{color:"var(--mint)"}}>.</span></a>
+      <ul className="flex gap-0.5 overflow-x-auto noscroll">{ids.map(([id,l])=><li key={id} className="shrink-0"><a href={"#"+id} className="relative block px-3 py-2 text-[.8rem] rounded-full" style={{color:a===id?"#140B2E":"var(--mut)"}}>{a===id&&<motion.span layoutId="np" className="absolute inset-0 rounded-full" style={{background:"var(--mint)"}} transition={{type:"spring",stiffness:400,damping:35}}/>}<span className="relative font-medium">{l}</span></a></li>)}</ul></div></motion.nav></>;
+}
+ 
+function Hero(){
+  const rm=useRM();const roles=["aspiring software developer","technology explorer","web builder","lifelong learner"];const [r,setR]=useState(0);
+  useEffect(()=>{if(rm)return;const t=setInterval(()=>setR(x=>(x+1)%roles.length),2400);return()=>clearInterval(t)},[rm]);
+  const {scrollY}=useScroll();const y1=useTransform(scrollY,[0,800],[0,rm?0:-120]),y2=useTransform(scrollY,[0,800],[0,rm?0:80]);
+  const D=1.2,up=d=>({initial:rm?false:{opacity:0,y:36},animate:{opacity:1,y:0},transition:{duration:1,delay:D+d,ease}});
+  const flt=(d)=>rm?{}:{animate:{y:[0,-16,0]},transition:{duration:7,delay:d,repeat:Infinity,ease:"easeInOut"}};
+  return <section id="hero" className="relative min-h-screen flex items-center justify-center px-5 pt-28 pb-24 overflow-hidden">
+    <motion.div aria-hidden="true" style={{y:y1}} className="absolute -top-20 -left-24 w-[26rem] h-[26rem] rounded-full blur-3xl opacity-30" ><div className="w-full h-full rounded-full" style={{background:"var(--vio)"}}/></motion.div>
+    <motion.div aria-hidden="true" style={{y:y2}} className="absolute bottom-0 -right-24 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-25"><div className="w-full h-full rounded-full" style={{background:"#FF7A30"}}/></motion.div>
+    <div aria-hidden="true" className="absolute inset-0 opacity-[.07]" style={{backgroundImage:"linear-gradient(var(--tx) 1px,transparent 1px),linear-gradient(90deg,var(--tx) 1px,transparent 1px)",backgroundSize:"56px 56px",maskImage:"radial-gradient(ellipse at center,#000 20%,transparent 70%)",WebkitMaskImage:"radial-gradient(ellipse at center,#000 20%,transparent 70%)"}}/>
+    {[["</>","8%","30%",0],["{ }","84%","24%",1],["01","12%","74%",2],["λ","80%","70%",1.5]].map(([t,l,tp,d],i)=><motion.span key={i} aria-hidden="true" className="absolute m text-sm rounded-xl px-3 py-2 hidden sm:block" style={{left:l,top:tp,border:"1px solid var(--ln)",color:"var(--mint)",background:"rgba(31,20,69,.6)"}} {...flt(d)}>{t}</motion.span>)}
+    <div className="relative text-center max-w-4xl">
+      <motion.div {...up(0)} className="k inline-flex items-center gap-2 rounded-full px-4 py-2" style={{border:"1px solid var(--ln)"}}><span className="w-2 h-2 rounded-full" style={{background:"var(--mint)"}}/>HELLO, WORLD! I'M</motion.div>
+      <h1 className="d font-extrabold leading-[.88] mt-6 text-[clamp(4.5rem,17vw,12rem)]" aria-label="Usha Sri"><span className="block overflow-hidden pb-4"><motion.span className="block grad" initial={rm?false:{y:"105%"}} animate={{y:0}} transition={{duration:1.2,delay:D+.1,ease}}>Usha Sri</motion.span></span></h1>
+      <motion.p {...up(.4)} className="d text-2xl md:text-4xl font-semibold mt-4 leading-tight">Turning curiosity into code and ideas into reality.</motion.p>
+      <motion.p {...up(.55)} className="mt-5 text-sm md:text-base" style={{color:"var(--mut)"}}>B.Tech CSE @ RGUKT Basar · <span className="m" style={{color:"var(--amb)"}} aria-live="off">{roles[r]}</span></motion.p>
+      <motion.p {...up(.65)} className="mt-4 mx-auto max-w-xl leading-relaxed" style={{color:"var(--mut)"}}>Computer Science student, technology explorer and aspiring software developer who loves building meaningful digital experiences.</motion.p>
+      <motion.div {...up(.8)} className="mt-9 flex flex-wrap justify-center gap-4"><Btn href="#work" primary>Explore My Work <Ic n="arrow" s={16}/></Btn><Btn href="#contact">Let's Connect</Btn></motion.div></div>
+    <motion.a href="#about" aria-label="Scroll to About" className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" initial={rm?false:{opacity:0}} animate={{opacity:1}} transition={{delay:D+1.2}}><span className="k" style={{color:"var(--mut)"}}>Scroll</span><span className="relative w-px h-10 overflow-hidden" style={{background:"var(--ln)"}}><motion.span className="absolute inset-x-0 h-4" style={{background:"var(--mint)"}} animate={rm?{}:{y:[-16,44]}} transition={{duration:1.8,repeat:Infinity,ease:"easeInOut"}}/></span></motion.a>
+  </section>;
+}
+ 
+function About(){
+  const B=({className,children,delay=0})=><Rev delay={delay} className={"card p-6 md:p-8 "+className}>{children}</Rev>;
+  const [t,setT]=useState(0);const tr=[["Curious Mind","I ask why before how."],["Creative Thinker","Ideas first, code gives them shape."],["Problem Solver","Big problems, small solvable pieces."],["Lifelong Learner","Learning by building, always."]];
+  return <section id="about" className="sec"><div className="wrap"><Title k="01 — My Story">More Than <span className="grad">Just Code.</span></Title>
+    <div className="grid md:grid-cols-6 gap-4 md:gap-5">
+      <B className="md:col-span-4 md:row-span-2"><p className="d text-2xl md:text-3xl leading-snug font-semibold">I'm Usha Sri, a Computer Science Engineering student at Rajiv Gandhi University of Knowledge Technologies, Basar. I enjoy exploring emerging technologies, solving problems and transforming creative ideas into practical applications.</p><p className="mt-6 leading-relaxed" style={{color:"var(--mut)"}}>My interests include Artificial Intelligence, Cloud Computing, Web Development and Software Engineering. I love learning by building and believe that every project is an opportunity to grow.</p></B>
+      <B className="md:col-span-2" delay={.08}><Ic n="cap" s={26} c="text-[var(--mint)]"/><div className="k mt-4">Now studying</div><div className="d text-xl font-semibold mt-1">B.Tech CSE</div><div className="text-sm" style={{color:"var(--mut)"}}>RGUKT Basar · Expected 2028</div></B>
+      <B className="md:col-span-2" delay={.12}><div className="k">B.Tech CGPA</div><div className="d text-6xl font-extrabold grad mt-1">8.3</div></B>
+      <B className="md:col-span-3" delay={.1}><div className="k mb-4">Four sides of me</div><div role="tablist" className="flex flex-wrap gap-2">{tr.map((x,i)=><button key={x[0]} role="tab" aria-selected={t===i} onClick={()=>setT(i)} className="rounded-full px-4 py-2 text-sm transition-colors" style={{background:t===i?"var(--vio)":"transparent",color:t===i?"#140B2E":"var(--tx)",border:"1px solid var(--ln)"}}>{x[0]}</button>)}</div><p className="mt-4 d text-lg" aria-live="polite">{tr[t][1]}</p></B>
+      <B className="md:col-span-3" delay={.14}><div className="k mb-4">Exploring</div><div className="flex flex-wrap gap-2">{["Artificial Intelligence","Cloud Computing","Web Development","Software Engineering"].map(x=><span key={x} className="rounded-full px-4 py-2 text-sm" style={{background:"rgba(94,234,212,.1)",color:"var(--mint)"}}>{x}</span>)}</div></B>
+    </div></div></section>;
+}
+ 
+const PR=[
+ {n:"01",name:"Government Scheme & Public Utility Simplifier",problem:"Schemes, scholarships and public benefits are hard to find and understand, so people miss support they qualify for.",solution:"A platform that simplifies access through eligibility-based discovery and easy-to-understand information.",tags:["Web Platform","Eligibility Search","Public Benefits"],st:"In development",c:"var(--mint)"},
+ {n:"02",name:"EstimatorPro",problem:"Preparing estimates by hand is slow, inconsistent and hard to track across a sales team.",solution:"A digital estimation app with admin and salesman interfaces, estimate generation, A4 live preview, PDF export and dashboard analytics.",tags:["Admin Panel","Salesman Panel","PDF Export","Analytics"],st:"In development",c:"var(--vio)"},
+ {n:"03",name:"Future Letters",problem:"Thoughts, dreams and memories fade, and there's rarely a gentle way to revisit them.",solution:"A creative platform to write letters to your future self and reopen them on a date you choose.",tags:["Creative Web App","Scheduling","Personal"],st:"In development",c:"var(--ros)"},
+ {n:"04",name:"SmartSense",problem:"Fans keep running in empty rooms and waste electricity.",solution:"An intelligent fan automation concept that uses human presence detection to control the fan and reduce unnecessary consumption.",tags:["IoT Concept","Presence Detection","Energy Saving"],st:"Concept",c:"var(--amb)"}];
+function Art({i}){
+  const f="currentColor";const a=[
+  <g key="0">{[0,1,2].map(k=><g key={k}><rect x="50" y={36+k*54} width="300" height="42" rx="12" fill="#fff" opacity=".1"/><circle cx="76" cy={57+k*54} r="9" fill={f} opacity={k<2?1:.25}/><rect x="100" y={50+k*54} width={150-k*20} height="7" rx="3.5" fill="#fff" opacity=".6"/><rect x="100" y={63+k*54} width="90" height="5" rx="2.5" fill="#fff" opacity=".25"/><rect x="290" y={48+k*54} width="40" height="18" rx="9" fill={f} opacity=".8"/></g>)}</g>,
+  <g key="1"><rect x="56" y="22" width="132" height="176" rx="8" fill="#fff" opacity=".92"/><rect x="72" y="40" width="64" height="7" rx="3" fill="#140B2E" opacity=".7"/>{[0,1,2,3].map(k=><rect key={k} x="72" y={60+k*12} width={104-k*8} height="4" rx="2" fill="#140B2E" opacity=".2"/>)}<rect x="72" y="156" width="104" height="24" rx="6" fill={f}/><rect x="208" y="38" width="144" height="150" rx="16" fill="#fff" opacity=".1"/>{[40,72,54,100].map((h,k)=><rect key={k} x={226+k*30} y={172-h} width="20" height={h} rx="5" fill={f} opacity={.4+k*.2}/>)}</g>,
+  <g key="2"><rect x="70" y="70" width="260" height="128" rx="12" fill="#fff" opacity=".12"/><path d="M70 78l130 84 130-84" stroke={f} strokeWidth="2" fill="none"/><rect x="140" y="28" width="120" height="100" rx="8" fill="#fff" opacity=".93" transform="rotate(-4 200 78)"/><rect x="158" y="48" width="56" height="6" rx="3" fill={f}/><rect x="158" y="64" width="82" height="4" rx="2" fill="#140B2E" opacity=".25"/><rect x="158" y="76" width="70" height="4" rx="2" fill="#140B2E" opacity=".25"/><text x="200" y="190" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="11" fill="#fff" opacity=".7">OPEN ON · A FUTURE DATE</text></g>,
+  <g key="3"><circle cx="200" cy="112" r="64" fill="#fff" opacity=".1"/>{[0,120,240].map(r=><ellipse key={r} cx="200" cy="78" rx="15" ry="34" fill={f} opacity=".85" transform={`rotate(${r} 200 112)`}/>)}<circle cx="200" cy="112" r="9" fill="#fff"/><circle cx="90" cy="112" r="9" fill="#fff"/><path d="M74 140c4-12 28-12 32 0" stroke="#fff" strokeWidth="2" fill="none"/><path d="M290 72c14 14 14 54 0 68M310 56c22 22 22 84 0 100" stroke={f} strokeWidth="2" fill="none"/></g>];
+  return <svg viewBox="0 0 400 224" className="w-full h-full" role="img" aria-label={"Illustration of "+PR[i].name}>{a[i]}</svg>;
+}
+function Modal({p,i,close}){
+  const ref=useRef(null);
+  useEffect(()=>{ref.current&&ref.current.focus();const k=e=>e.key==="Escape"&&close();window.addEventListener("keydown",k);document.body.style.overflow="hidden";return()=>{window.removeEventListener("keydown",k);document.body.style.overflow=""}},[]);
+  return <motion.div className="fixed inset-0 z-[120] grid place-items-center p-4" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} role="dialog" aria-modal="true" aria-labelledby="mt">
+    <div className="absolute inset-0" style={{background:"rgba(10,5,24,.75)",backdropFilter:"blur(8px)"}} onClick={close}/>
+    <motion.div className="card relative w-full max-w-2xl max-h-[88vh] overflow-auto" initial={{y:50,opacity:0,scale:.97}} animate={{y:0,opacity:1,scale:1}} exit={{y:30,opacity:0}} transition={{duration:.5,ease}}>
+      <div className="aspect-[16/8] rounded-t-[1.75rem]" style={{color:p.c,background:"#1A1038"}}><Art i={i}/></div>
+      <button ref={ref} onClick={close} aria-label="Close" className="absolute top-4 right-4 w-10 h-10 rounded-full grid place-items-center" style={{background:"rgba(31,20,69,.85)",border:"1px solid var(--ln)"}}><Ic n="x"/></button>
+      <div className="p-7 md:p-9"><div className="k" style={{color:p.c}}>Project {p.n} · {p.st}</div><h3 id="mt" className="d text-3xl font-extrabold mt-2">{p.name}</h3>
+      <div className="k mt-6 mb-1" style={{color:"var(--mut)"}}>Problem</div><p style={{color:"var(--mut)"}} className="leading-relaxed">{p.problem}</p>
+      <div className="k mt-5 mb-1" style={{color:"var(--mut)"}}>Solution</div><p className="leading-relaxed">{p.solution}</p>
+      <div className="flex flex-wrap gap-2 mt-6">{p.tags.map(t=><span key={t} className="m text-xs px-3 py-1.5 rounded-full" style={{border:"1px solid "+p.c,color:p.c}}>{t}</span>)}</div>
+      <p className="m text-xs mt-7" style={{color:"var(--mut)"}}>GitHub repository and live demo: not published yet.</p></div></motion.div></motion.div>;
+}
+function Work(){
+  const [sel,setSel]=useState(null);const rm=useRM();
+  return <section id="work" className="sec"><div className="wrap"><Title k="02 — Selected Work">Things I've <span className="grad">built.</span></Title>
+    <p className="-mt-6 mb-10 max-w-lg text-sm" style={{color:"var(--mut)"}}>Shown with their honest status. Repository and demo links will appear only once something is genuinely published.</p>
+    <div>{PR.map((p,i)=><article key={p.n} className="md:sticky mb-6" style={{top:`calc(88px + ${i*18}px)`}}>
+      <motion.div className="card overflow-hidden grid md:grid-cols-2" style={{boxShadow:"0 -20px 50px -30px rgba(0,0,0,.8)"}} whileHover={rm?{}:{y:-4}} transition={{duration:.5,ease}}>
+        <button onClick={()=>setSel(i)} aria-label={"Open details for "+p.name} className="relative text-left aspect-[16/10] md:aspect-auto md:min-h-[320px] overflow-hidden group" style={{color:p.c,background:"radial-gradient(circle at 30% 20%,rgba(255,255,255,.08),transparent 60%),#1A1038"}}>
+          <motion.div className="absolute inset-0 p-4" initial={rm?false:{clipPath:"inset(0 100% 0 0)"}} whileInView={{clipPath:"inset(0 0% 0 0)"}} viewport={{once:true}} transition={{duration:1.1,ease}}><div className="w-full h-full group-hover:scale-105 transition-transform duration-700"><Art i={i}/></div></motion.div>
+          <span className="absolute bottom-4 left-4 m text-[.7rem] px-3 py-1.5 rounded-full" style={{background:"rgba(20,11,46,.8)",border:"1px solid var(--ln)"}}>click to open →</span></button>
+        <div className="p-6 md:p-9 flex flex-col">
+          <div className="flex items-center justify-between"><span className="d text-6xl font-extrabold" style={{color:p.c}}>{p.n}</span><span className="m text-[.68rem] uppercase tracking-widest px-3 py-1.5 rounded-full" style={{border:"1px solid var(--ln)"}}>● {p.st}</span></div>
+          <h3 className="d text-2xl md:text-3xl font-bold mt-4 leading-tight">{p.name}</h3>
+          <p className="mt-4 text-sm leading-relaxed" style={{color:"var(--mut)"}}><b style={{color:p.c}} className="m font-normal">PROBLEM </b>{p.problem}</p>
+          <p className="mt-3 text-sm leading-relaxed"><b style={{color:p.c}} className="m font-normal">SOLUTION </b>{p.solution}</p>
+          <div className="flex flex-wrap gap-2 mt-5">{p.tags.map(t=><span key={t} className="m text-[.7rem] px-3 py-1 rounded-full" style={{background:"rgba(255,255,255,.06)"}}>{t}</span>)}</div>
+          <div className="mt-auto pt-6 flex flex-wrap items-center gap-3"><Btn onClick={()=>setSel(i)} primary>Details <Ic n="arrow" s={15}/></Btn><span className="m text-xs" style={{color:"var(--mut)"}}>GitHub: not public yet</span></div></div>
+      </motion.div></article>)}</div></div>
+    <AnimatePresence>{sel!==null&&<Modal key="m" p={PR[sel]} i={sel} close={()=>setSel(null)}/>}</AnimatePresence></section>;
+}
+ 
+function Toolkit(){
+  const cats=[["Programming",["Java","C"],"var(--mint)"],["Frontend",["HTML","CSS","JavaScript"],"var(--vio)"],["Database",["SQL","DBMS"],"var(--amb)"],["Tools",["Git","GitHub"],"var(--ros)"],["Computer Science",["DSA","Computer Networks"],"var(--mint)"]];
+  const all=cats.flatMap(c=>c[1]).concat(["Cloud Computing","Artificial Intelligence","Data Analytics"]);const rm=useRM();
+  return <section id="toolkit" className="sec"><div className="wrap"><Title k="03 — My Toolkit">Tools I <span className="grad">think with.</span></Title></div>
+    <div aria-hidden="true" className="overflow-hidden py-5 mb-10" style={{borderTop:"1px solid var(--ln)",borderBottom:"1px solid var(--ln)"}}><div className="mq flex gap-10">{[...all,...all].map((s,i)=><span key={i} className="d text-3xl md:text-5xl font-extrabold whitespace-nowrap" style={{color:i%2?"transparent":"var(--tx)",WebkitTextStroke:i%2?"1px var(--mut)":"0"}}>{s} <span style={{color:"var(--mint)"}}>✦</span></span>)}</div></div>
+    <div className="wrap grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{cats.map((c,i)=><Rev key={c[0]} delay={i*.06}><div className="card p-6 h-full"><div className="flex justify-between items-center"><h3 className="d text-xl font-bold">{c[0]}</h3><span className="m text-xs" style={{color:c[2]}}>0{i+1}</span></div><ul className="flex flex-wrap gap-2 mt-5">{c[1].map(s=><motion.li key={s} whileHover={rm?{}:{y:-4,scale:1.05}} tabIndex={0} className="rounded-xl px-4 py-2.5 text-sm font-medium list-none" style={{border:"1px solid "+c[2],color:c[2]}}>{s}</motion.li>)}</ul></div></Rev>)}
+      <Rev delay={.3}><div className="card p-6 h-full" style={{borderStyle:"dashed",borderColor:"var(--vio)"}}><div className="flex items-center gap-2 k" style={{color:"var(--vio)"}}><Ic n="spark" s={14}/>Currently exploring</div><ul className="mt-5 space-y-2">{["Cloud Computing","Artificial Intelligence","Data Analytics"].map(x=><li key={x} className="d text-lg font-semibold">→ {x}</li>)}</ul></div></Rev></div></section>;
+}
+ 
+function Journey(){
+  const it=[["B.Tech Computer Science Engineering","RGUKT Basar","Expected 2028","CGPA 8.3","var(--mint)"],["PUC","Rajiv Gandhi University of Knowledge Technologies","Completed","CGPA 9.43","var(--vio)"],["10th Standard","Government Girls High School","Completed","98%","var(--amb)"]];
+  return <section id="journey" className="sec" style={{background:"linear-gradient(180deg,rgba(26,16,56,.55),rgba(255,122,48,.08))"}}><div className="wrap"><Title k="04 — My Journey">One step at a <span className="grad">time.</span></Title>
+    <div className="grid md:grid-cols-3 gap-5 relative">{it.map((e,i)=><Rev key={e[0]} delay={i*.12}><div className="relative pt-8"><div className="absolute top-0 left-0 right-0 flex items-center"><span className="w-4 h-4 rounded-full shrink-0" style={{background:e[4],boxShadow:`0 0 0 6px ${"rgba(255,255,255,.05)"}`}}/><motion.span className="h-px flex-1 origin-left" style={{background:"var(--ln)"}} initial={{scaleX:0}} whileInView={{scaleX:1}} viewport={{once:true}} transition={{duration:1.2,delay:.3+i*.12}}/></div>
+      <div className="card p-6"><div className="k" style={{color:e[4]}}>{e[2]}</div><h3 className="d text-2xl font-bold mt-2 leading-tight">{e[0]}</h3><p className="text-sm mt-2" style={{color:"var(--mut)"}}>{e[1]}</p><div className="d text-4xl font-extrabold mt-6" style={{color:e[4]}}>{e[3]}</div></div></div></Rev>)}</div></div></section>;
+}
+ 
+function Certs(){
+  const c=[["IBM AI Fundamentals","IBM","var(--mint)"],["IBM Prompt Engineering","IBM","var(--vio)"],["Cybersecurity Analyst Job Simulation","Job Simulation","var(--ros)"]];const rm=useRM();
+  return <section id="certs" className="sec"><div className="wrap"><Title k="05 — Certifications">Proof of <span className="grad">practice.</span></Title>
+    <ul className="grid md:grid-cols-3 gap-5">{c.map((x,i)=><motion.li key={x[0]} className="list-none" initial={rm?false:{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:.8,delay:i*.1,ease}} whileHover={rm?{}:{y:-8,rotate:i-1}}>
+      <div className="card p-7 min-h-[250px] flex flex-col relative overflow-hidden"><div className="absolute -right-10 -top-10 w-36 h-36 rounded-full opacity-20" style={{background:x[2]}}/><span style={{color:x[2]}}><Ic n="award" s={34}/></span><div className="m text-xs mt-6" style={{color:"var(--mut)"}}>{x[1]}</div><h3 className="d text-2xl font-bold mt-2 leading-tight">{x[0]}</h3><div className="m text-[.7rem] mt-auto pt-6" style={{color:"var(--mut)"}}>Certificate file not linked yet</div></div></motion.li>)}</ul></div></section>;
+}
+ 
+function Beyond(){
+  const it=[["Building personal projects","rocket","Half-working prototypes and the joy when they finally run.","var(--mint)"],["Exploring new technologies","flask","Always one tab open to something new.","var(--vio)"],["Learning musical instruments","music","Practice that teaches patience, just like debugging.","var(--ros)"],["Creative experimentation","spark","Trying odd ideas to see what happens.","var(--amb)"]];const rm=useRM();
+  return <section id="beyond" className="sec overflow-hidden"><div className="wrap"><Title k="06 — Beyond Technology">A little beyond the <span className="grad">screen.</span></Title>
+    <ul className="grid sm:grid-cols-2 gap-5">{it.map((x,i)=><motion.li key={x[0]} className="list-none" initial={rm?false:{opacity:0,y:30,rotate:i%2?2:-2}} whileInView={{opacity:1,y:0,rotate:i%2?.8:-.8}} viewport={{once:true}} transition={{duration:.9,delay:i*.08,ease}} whileHover={rm?{}:{rotate:0,scale:1.02}}>
+      <div className="rounded-[2rem] p-7 flex gap-5 items-start h-full" style={{background:x[3],color:"#140B2E"}}><span className="shrink-0 w-14 h-14 rounded-full grid place-items-center" style={{background:"rgba(255,255,255,.5)"}}><Ic n={x[1]} s={24}/></span><div><h3 className="d text-xl font-bold">{x[0]}</h3><p className="text-sm mt-2 leading-relaxed opacity-80">{x[2]}</p></div></div></motion.li>)}</ul></div></section>;
+}
+ 
+function Contact(){
+  const [f,setF]=useState({name:"",email:"",message:""}),[er,setEr]=useState({}),[msg,setMsg]=useState(null),[cp,setCp]=useState(false);
+  const set=k=>e=>setF({...f,[k]:e.target.value});
+  const submit=e=>{e.preventDefault();const x={};
+    if(f.name.trim().length<2)x.name="Please enter your name.";
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email))x.email="Please enter a valid email address.";
+    if(f.message.trim().length<10)x.message="Message should be at least 10 characters.";
+    setEr(x);setMsg(null);if(Object.keys(x).length)return;
+    window.location.href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Portfolio message from "+f.name)+"&body="+encodeURIComponent(f.message+"\n\n— "+f.name+" ("+f.email+")");
+    setMsg("Your email app should open with the message ready. It is only sent once you press send there. If nothing opens, email "+EMAIL+" directly.");};
+  const copy=async()=>{try{await navigator.clipboard.writeText(EMAIL);setCp(true);setTimeout(()=>setCp(false),2000)}catch(e){setMsg("Couldn't copy automatically — the address is "+EMAIL)}};
+  const fld="w-full bg-transparent border-b py-3 outline-none transition-colors focus:border-[color:var(--mint)]";
+  return <section id="contact" className="sec"><div className="wrap grid lg:grid-cols-12 gap-12">
+    <div className="lg:col-span-6"><Rev><div className="k mb-3">07 — Let's Connect</div></Rev><Rev delay={.08}><h2 className="d text-4xl md:text-6xl font-extrabold leading-[1.04]">Every great idea starts with a <span className="grad">conversation.</span></h2></Rev>
+      <Rev delay={.15} className="mt-8"><div className="card p-5 flex items-center gap-4"><span style={{color:"var(--mint)"}}><Ic n="mail" s={22}/></span><a href={"mailto:"+EMAIL} className="m text-sm break-all underline-offset-4 hover:underline">{EMAIL}</a><button onClick={copy} aria-label="Copy email address" className="ml-auto shrink-0 rounded-full px-3 py-2 text-xs flex items-center gap-2" style={{border:"1px solid var(--ln)"}}><Ic n="copy" s={14}/>{cp?"Copied":"Copy"}</button></div>
+      <p className="m text-xs mt-4" style={{color:"var(--mut)"}}>GitHub and LinkedIn links will be added here once available.</p></Rev></div>
+    <Rev className="lg:col-span-6"><form onSubmit={submit} noValidate aria-label="Contact form" className="card p-7 md:p-9 space-y-6">
+      {[["name","Your name","text"],["email","Email address","email"]].map(([k,l,t])=><div key={k}><label htmlFor={k} className="k">{l}</label><input id={k} type={t} value={f[k]} onChange={set(k)} autoComplete={k} aria-invalid={!!er[k]} className={fld} style={{borderColor:er[k]?"var(--ros)":"var(--ln)"}}/>{er[k]&&<p role="alert" className="text-sm mt-1" style={{color:"var(--ros)"}}>{er[k]}</p>}</div>)}
+      <div><label htmlFor="message" className="k">Message</label><textarea id="message" rows="4" value={f.message} onChange={set("message")} aria-invalid={!!er.message} className={fld+" resize-none"} style={{borderColor:er.message?"var(--ros)":"var(--ln)"}}/>{er.message&&<p role="alert" className="text-sm mt-1" style={{color:"var(--ros)"}}>{er.message}</p>}</div>
+      <Btn type="submit" primary>Send message <Ic n="arrow" s={16}/></Btn>
+      <AnimatePresence>{msg&&<motion.p role="status" initial={{opacity:0,y:6}} animate={{opacity:1,y:0}} exit={{opacity:0}} className="text-sm leading-relaxed" style={{color:"var(--mint)"}}>{msg}</motion.p>}</AnimatePresence></form></Rev></div></section>;
+}
+ 
+function App(){
+  const [done,setDone]=useState(false);useEffect(()=>{const t=setTimeout(()=>setDone(true),1100);return()=>clearTimeout(t)},[]);
+  return <><AnimatePresence>{!done&&<motion.div key="l" className="fixed inset-0 z-[200] grid place-items-center" style={{background:"var(--bg)"}} exit={{opacity:0,scale:1.04}} transition={{duration:.7,ease}}><div className="text-center"><motion.div className="d text-5xl font-extrabold grad" initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.7,ease}}>Usha Sri</motion.div><div className="mt-5 h-px w-40 mx-auto overflow-hidden" style={{background:"var(--ln)"}}><motion.div className="h-full" style={{background:"var(--mint)"}} initial={{x:"-100%"}} animate={{x:0}} transition={{duration:1,ease:"easeInOut"}}/></div></div></motion.div>}</AnimatePresence>
+  <Nav/><main><Hero/><About/><Work/><Toolkit/><Journey/><Certs/><Beyond/><Contact/></main>
+  <footer className="px-5 pb-10 pt-8 text-center" style={{borderTop:"1px solid var(--ln)"}}><p className="d text-xl font-semibold">Designed with curiosity. Built with passion.</p><p className="m text-xs mt-3" style={{color:"var(--mut)"}}>© 2026 B Usha Sri · RGUKT Basar</p></footer></>;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
+ 
